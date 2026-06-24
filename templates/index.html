@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FaceID Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">FaceID<em>Console</em></span>
+    </div>
+    <div class="dataset-status" id="datasetStatus">
+      <span class="dot"></span>
+      <span id="datasetText">loading dataset…</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <nav class="tabs" role="tablist">
+        <button class="tab is-active" data-tab="live" role="tab">Live camera</button>
+        <button class="tab" data-tab="upload" role="tab">Upload video</button>
+      </nav>
+
+      <!-- LIVE -->
+      <div class="panel is-active" id="panel-live">
+        <div class="viewport">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="overlay"></canvas>
+          <div class="scanline" id="scanline"></div>
+          <div class="viewport-hint" id="liveHint">Camera band hai — Start dabao</div>
+        </div>
+        <div class="controls">
+          <button class="btn btn-primary" id="startBtn">Start camera</button>
+          <button class="btn" id="stopBtn" disabled>Stop</button>
+          <span class="status-pill" id="liveStatus" hidden><span class="dot"></span> scanning</span>
+        </div>
+      </div>
+
+      <!-- UPLOAD -->
+      <div class="panel" id="panel-upload">
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="video/*" hidden />
+          <span class="dz-icon" aria-hidden="true">＋</span>
+          <span class="dz-title">Drop a video here, ya click to browse</span>
+          <span class="dz-sub" id="fileName">mp4, mov, avi — koi bhi clip</span>
+        </label>
+        <div class="controls">
+          <button class="btn btn-primary" id="analyzeBtn" disabled>Analyze video</button>
+          <span class="status-pill" id="uploadStatus" hidden><span class="dot"></span> analyzing…</span>
+        </div>
+        <div class="result" id="result" hidden>
+          <video id="resultVideo" controls></video>
+          <p class="result-fallback" id="resultFallback" hidden>
+            Preview na chale to video download karke dekho:
+            <a id="downloadLink" href="#">result.mp4</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDE PANEL -->
+    <aside class="sidebar">
+      <div class="card">
+        <h2 class="card-title">Detected now</h2>
+        <ul class="detect-list" id="detectList">
+          <li class="detect-empty">Abhi koi face nahi</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="card-title">Known people</h2>
+        <div class="chips" id="knownChips"><span class="chip-empty">—</span></div>
+        <p class="card-note">Naya banda add karna ho to <code>dataset/</code> me uske naam ka folder banao aur <code>1_encode_faces.py</code> dobara chalao.</p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

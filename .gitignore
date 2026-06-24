@@ -1,0 +1,13 @@
+venv/
+myenv/
+env/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+uploads/
+static/outputs/
+encodings.pickle
+.DS_Store
+.vscode/
+Thumbs.db
