@@ -3,7 +3,7 @@
 Ek face recognition project jo **live camera** aur **uploaded video** dono se chehra pehchaan kar uska **naam** bata deta hai. Iske do tarike se use kar sakte ho:
 
 <p align="center">
-  <img src="assets/screenshot(612).png" width="45%"/>
+  <img src="assets/Screenshot(612).png" width="45%"/>
   <img src="assets/Screenshot(613).png" width="45%"/>
 </p>
 
