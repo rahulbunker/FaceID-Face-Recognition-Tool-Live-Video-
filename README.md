@@ -2,6 +2,11 @@
 
 Ek face recognition project jo **live camera** aur **uploaded video** dono se chehra pehchaan kar uska **naam** bata deta hai. Iske do tarike se use kar sakte ho:
 
+<p align="center">
+  <img src="assets/screenshot(612).png" width="45%"/>
+  <img src="assets/Screenshot(613).png" width="45%"/>
+</p>
+
 1. **Terminal scripts** — seedhe Python se (live camera / video file).
 2. **Web app** — ek sundar browser interface (Flask + HTML/CSS/JS) jisme tab badal kar live ya video upload kar sakte ho.
 
